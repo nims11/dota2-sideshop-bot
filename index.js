@@ -367,6 +367,7 @@ require("./handlers/guild");
 require("./handlers/community");
 require("./handlers/helper");
 require("./handlers/match");
+require("./handlers/sideshop");
 require("./handlers/lobbies");
 require("./handlers/parties");
 require("./handlers/leagues");
