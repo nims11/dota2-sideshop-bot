@@ -13,7 +13,7 @@ algorithm.
 
 ## Installation and setup node-dota2
 * `npm install` in your repository root
-* Copy `node_modules/dota2/examples/config.js.example` to `config.js` in your project root and edit appropriately
+* Copy `examples/config.js.example` to `config.js` in your project root and edit appropriately
 * Copy the latest protobufs from `./protobufs` to `node_modules/steam-resources/protobufs/dota2`
 * Run the example script: `node sideshop_show.js` (This will just show your
     sideshop status and exit)
