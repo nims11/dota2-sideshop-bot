@@ -288,7 +288,9 @@ function enhanceDraftData(draft_data) {
 var onUnderDraftResponse = function onUnderDraftResponse(message, callback) {
     callback = callback || null;
     var underDraftResponse = Dota2.schema.CMsgClientToGCUnderDraftResponse.decode(message);
-    enhanceDraftData(underDraftResponse["draft_data"]);
+    if(underDraftResponse["result"] == 1){
+        enhanceDraftData(underDraftResponse["draft_data"]);
+    }
     callback(underDraftResponse);
 };
 handlers[Dota2.schema.EDOTAGCMsg.k_EMsgClientToGCUnderDraftResponse] = onUnderDraftResponse;
@@ -296,7 +298,9 @@ handlers[Dota2.schema.EDOTAGCMsg.k_EMsgClientToGCUnderDraftResponse] = onUnderDr
 var onUnderDraftSellResponse = function onUnderDraftSellResponse(message, callback) {
     callback = callback || null;
     var underDraftSellResponse = Dota2.schema.CMsgClientToGCUnderDraftSellResponse.decode(message);
-    enhanceDraftData(underDraftSellResponse["draft_data"]);
+    if(underDraftSellResponse["result"] == 1){
+        enhanceDraftData(underDraftSellResponse["draft_data"]);
+    }
     callback(underDraftSellResponse);
 };
 handlers[Dota2.schema.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSellResponse] = onUnderDraftSellResponse;
@@ -304,7 +308,9 @@ handlers[Dota2.schema.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSellResponse] = onUnd
 var onUnderDraftBuyResponse = function onUnderDraftBuyResponse(message, callback) {
     callback = callback || null;
     var underDraftBuyResponse = Dota2.schema.CMsgClientToGCUnderDraftBuyResponse.decode(message);
-    enhanceDraftData(underDraftBuyResponse["draft_data"]);
+    if(underDraftBuyResponse["result"] == 1){
+        enhanceDraftData(underDraftBuyResponse["draft_data"]);
+    }
     callback(underDraftBuyResponse);
 };
 handlers[Dota2.schema.EDOTAGCMsg.k_EMsgClientToGCUnderDraftBuyResponse] = onUnderDraftBuyResponse;
@@ -312,7 +318,9 @@ handlers[Dota2.schema.EDOTAGCMsg.k_EMsgClientToGCUnderDraftBuyResponse] = onUnde
 var onUnderDraftRerollResponse = function onUnderDraftRerollResponse(message, callback) {
     callback = callback || null;
     var underDraftRerollResponse = Dota2.schema.CMsgClientToGCUnderDraftRerollResponse.decode(message);
-    enhanceDraftData(underDraftRerollResponse["draft_data"]);
+    if(underDraftRerollResponse["result"] == 1){
+        enhanceDraftData(underDraftRerollResponse["draft_data"]);
+    }
     callback(underDraftRerollResponse);
 };
 handlers[Dota2.schema.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRerollResponse] = onUnderDraftRerollResponse;

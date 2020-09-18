@@ -230,7 +230,8 @@ var onSteamLogOn = function onSteamLogOn(logonResp) {
                         setTimeout(function() {
                             Dota2.underDraftSell(29, bench["slot_id"], function(msg) {
                                 if(msg["result"] != 1){
-                                    throw "Error";
+                                    Dota2.emit("3star_sell", draft_data);
+                                    return;
                                 }
                                 Dota2.emit("3star_sell", msg["draft_data"]);
                             });
@@ -249,7 +250,8 @@ var onSteamLogOn = function onSteamLogOn(logonResp) {
                         setTimeout(function() {
                             Dota2.underDraftBuy(29, shop["slot_id"], function(msg) {
                                 if(msg["result"] != 1){
-                                    throw "Error";
+                                    Dota2.emit("buy_to_free_slots", draft_data);
+                                    return;
                                 }
                                 Dota2.emit("3star_sell", msg["draft_data"]);
                             });
@@ -317,7 +319,8 @@ var onSteamLogOn = function onSteamLogOn(logonResp) {
                                     setTimeout(function(){
                                         Dota2.underDraftBuy(29, candidate["slot_id"], function(msg){
                                             if(msg["result"] != 1){
-                                                throw "Error";
+                                                Dota2.emit("buy", draft_data);
+                                                return;
                                             }
                                             Dota2.emit("3star_sell", msg["draft_data"]);
                                         });
@@ -327,7 +330,8 @@ var onSteamLogOn = function onSteamLogOn(logonResp) {
                                     setTimeout(function(){
                                         Dota2.underDraftSell(29, bench[j]["slot_id"], function(msg){
                                             if(msg["result"] != 1){
-                                                throw "Error";
+                                                Dota2.emit("buy", draft_data);
+                                                return;
                                             }
                                             Dota2.emit("buy", msg["draft_data"]);
                                         });
@@ -342,7 +346,8 @@ var onSteamLogOn = function onSteamLogOn(logonResp) {
                 setTimeout(function(){
                     Dota2.underDraftReroll(29, function(msg){
                         if(msg["result"] != 1){
-                            throw "Error";
+                            Dota2.emit("buy", draft_data);
+                            return;
                         }
                         fs.appendFile('log.txt', JSON.stringify(msg["draft_data"]["shop_slots"]) + "\n", function(){});
                         Dota2.emit("3star_sell", msg["draft_data"]);
